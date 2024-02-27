@@ -1,13 +1,35 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { UserService } from './user.service';
+import { ToasterService } from './toaster.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-todo';
+
+  constructor(public userService:UserService,private toaster:ToasterService,private router:Router){}
+
+  title = 'ToDo Application';
+  links = [
+    { title: 'Home', link: '/home' },
+    { title: 'My ToDo List', link: '/todolist' },
+    { title: 'Add A New ToDo', link: '/todoform' },
+    { title: 'Refer A Friend', link: '/register' },
+    { title: 'About', link: '/about' },
+    { title: 'Contact-Us', link: '/contact' }
+  ]
+
+  handleLogout(){
+    localStorage.removeItem('accessToken');
+    this.userService.setJWTToken('');
+    this.userService.setUsername('');
+    this.toaster.successToaster('Logged Out Successfully');
+    this.router.navigate(['/home']);
+  }
+
 }

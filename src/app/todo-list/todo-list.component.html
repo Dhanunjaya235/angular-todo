@@ -1,0 +1,9 @@
+<div class="todolist">
+  @if (todoList.length) {
+    @for (todo of todoList; track todoList) {
+        <app-todo-item [todoItem]="todo" [fetchTodosOfUser]="fetchTodosOfUser.bind(this)"></app-todo-item>
+     }
+  }@else {
+    <div>No Todos To Display.Create One </div>
+  }
+</div>

@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
+body{
+    background-image: url('./assets/flat-lay-desk-concept-with-copy-space.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+}
+
+.error-text{
+    font-size: 12px;
+    color: red;
+    padding-left: 1%;
+}
+
+.footer--TjKhNYZ{
+    display: none;
+    visibility: hidden;
+}

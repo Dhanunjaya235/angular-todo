@@ -1,0 +1,94 @@
+<div class="todoform-container">
+    <form class="todoform" [formGroup]="todoform" ngNativeValidate>
+    <div class="todo-heading">Add ToDo</div>
+        <div class="input-group">
+            <input required="" type="text" name="text" autocomplete="off" class="input" formControlName="title">
+            <label class="user-label">Title</label>
+        </div>
+
+        @if (todoform.get('title')?.invalid && (todoform.get('title')?.touched ||
+        todoform.get('title')?.dirty)) {
+        <span class="error-text">Title is Required</span>
+        }
+
+        <div class="input-group">
+            <textarea  required="" type="text" name="text" autocomplete="off" class="input" rows="3"  formControlName="note">
+        </textarea>
+            <label class="user-label">Note</label>
+        </div>
+
+        @if (todoform.get('note')?.invalid && (todoform.get('note')?.touched ||
+        todoform.get('note')?.dirty)) {
+        <span class="error-text">Note is Required</span>
+        }
+        <div class="status-label">Choose The Status</div>
+
+        <div class="radio-inputs">
+            <label class="radio">
+                <input type="radio" name="status" formControlName="status" value="New">
+                <span class="name">New</span>
+              </label>
+            <label class="radio">
+              <input type="radio" name="status" formControlName="status" value="InProgress">
+              <span class="name">InProgress</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="status" formControlName="status" value="Pending">
+              <span class="name">Pending</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="status" formControlName="status" value="Completed">
+                <span class="name">Completed</span>
+              </label>
+          </div> 
+
+          <div class="status-label">Choose Due Date</div>
+          <input type="date" formControlName="duedate">
+
+          @if (todoform.get('duedate')?.invalid && (todoform.get('duedate')?.touched ||
+          todoform.get('duedate')?.dirty)) {
+          <span class="error-text">Duedate is Required</span>
+          }
+
+          <div class="actions">
+            <button class="save" (click)="handleSave()" [disabled]="!(todoform.valid && todoform.dirty)">
+                <div class="svg-wrapper-1">
+                  <div class="svg-wrapper">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z"></path>
+                      <path
+                        fill="currentColor"
+                        d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <span>@if (formData) {
+                  Edit}@else {
+                    Save
+                  }</span>
+              </button>
+
+              <button class="cssbuttons-io" type="reset" (click)="handleReset()">
+                <span
+                  ><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                  Reset</span
+                >
+              </button>
+              
+              
+          </div>
+        
+    </form>
+</div>

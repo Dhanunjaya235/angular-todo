@@ -1,0 +1,245 @@
+.todoform-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  width: 300px;
+}
+
+.todo-heading {
+  text-align: center;
+  font-weight: bold;
+  color: darkslateblue;
+  font-size: xx-large;
+}
+
+.todoform {
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+  backdrop-filter: blur(10px);
+}
+
+.input {
+  border: solid 1.5px #9e9e9e;
+  border-radius: 1rem;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: black;
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.user-label {
+  position: absolute;
+  left: 15px;
+  color: black;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 550ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus,
+input:valid,
+textarea:valid {
+  outline: none;
+  border: none;
+  border-bottom: 1.5px solid #1a73e8;
+  border-right: 1.5px solid #1a73e8;
+  border-left: 1.5px solid #1a73e8;
+}
+
+.input:focus~label,
+input:valid~label,textarea:valid~label {
+  transform: translateY(-50%) scale(0.8);
+  padding: 0 .2em;
+  color: #2196f3;
+}
+
+.radio-inputs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  font-size: 12px;
+}
+
+.radio-inputs .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.radio-inputs .radio input {
+  display: none;
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: .5rem 0;
+  color: black;
+  transition: all .15s ease-in-out;
+  font-weight: 500;
+}
+
+.radio-inputs .radio input:checked+.name {
+  background-color: #fff;
+  font-weight: 600;
+}
+
+.status-label {
+  color: #2196f3;
+}
+
+input[type="date"] {
+  background-color: lightsteelblue;
+  padding: 15px;
+  font-family: "Roboto Mono", monospace;
+  color: black;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: lightsteelblue;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.save {
+  font-family: inherit;
+  font-size: 20px;
+  background: royalblue;
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.save:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.save span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.save svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.save:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.save:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.save:hover span {
+  transform: translateX(5em);
+}
+
+.save:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: ghostwhite;
+  overflow: hidden;
+}
+
+.cssbuttons-io svg {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+}
+
+.cssbuttons-io span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1.2em 0.8em 1.05em;
+}
+
+.cssbuttons-io::before,
+.cssbuttons-io::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.cssbuttons-io::before {
+  content: "";
+  background: #000;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.cssbuttons-io:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.cssbuttons-io:active {
+  transform: scale(0.95);
+}

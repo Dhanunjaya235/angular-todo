@@ -1,0 +1,72 @@
+<div class="register-div">
+    <form class="form" [formGroup]="registrationFrom" ngNativeValidate>
+        <p class="title">Register </p>
+        <p class="message">Signup now and get full access to our app. </p>
+        <label>
+            <input class="input" type="text" placeholder="" formControlName="firstName"
+                (blur)="validateNames('firstName')">
+            <span>Firstname</span>
+        </label>
+        @if ((registrationFrom.get('firstName')?.invalid && registrationFrom.get('firstName')?.touched &&
+        !registrationFrom.get('firstName')?.dirty)) {
+        <span class="error-text">Firstname is Required</span>
+        }@else if (registrationFrom.hasError('firstNameMismatch')) {
+        <span class="error-text">Firstname should not special characters</span>
+        }
+        <label>
+            <input class="input" type="text" placeholder="" formControlName="lastName"
+                (blur)="validateNames('lastName')">
+            <span>Lastname</span>
+            @if ((!registrationFrom.get('lastName')?.valid && registrationFrom.get('lastName')?.touched &&
+            !registrationFrom.get('lastName')?.dirty)) {
+            <span class="error-text">Lastname is Required</span>
+            }@else if (registrationFrom.hasError('lastNameMismatch')) {
+            <span class="error-text">Lastname should not special characters</span>
+            }
+        </label>
+
+        <label>
+            <input class="input" placeholder="" formControlName="email">
+            <span>Email</span>
+            @if ((registrationFrom.get('email')?.invalid && registrationFrom.get('email')?.touched &&
+            !registrationFrom.get('email')?.dirty)) {
+            <span class="error-text">Email is Required</span>
+            }@else if ((registrationFrom.get('email')?.invalid && registrationFrom.get('email')?.touched &&
+            registrationFrom.get('email')?.dirty)) {
+            <span class="error-text">Enter Valid Email</span>
+            }
+        </label>
+
+        <label>
+            <input class="input" type="password" placeholder="" formControlName="password">
+            <span>Password</span>
+            @if ((registrationFrom.get('password')?.invalid && registrationFrom.get('password')?.touched &&
+            !registrationFrom.get('password')?.dirty)) {
+            <span class="error-text">Password is Required</span>
+            }@else if ((registrationFrom.get('password')?.invalid && registrationFrom.get('password')?.touched &&
+            registrationFrom.get('password')?.dirty)) {
+            <span class="error-text">Enter Valid Password.Password should contain 8 characters</span>
+            }
+        </label>
+        <label>
+            <input class="input" type="password" placeholder="" formControlName="confirmPassword">
+            <span>Confirm password</span>
+            @if ((registrationFrom.get('confirmPassword')?.invalid && registrationFrom.get('confirmPassword')?.touched
+            &&
+            !registrationFrom.get('confirmPassword')?.dirty)) {
+            <span class="error-text">Confirm Password is Required</span>
+            }@else if (registrationFrom.hasError('passwordMismatch')) {
+            <span class="error-text">Password and ConfirmPassword are not matching</span>
+            }
+        </label>
+        <button class="submit" (click)="onSubmit()" [disabled]="!registrationFrom.valid">Submit</button>
+        <p class="signin">Already have an acount ? <a href="/login">Signin</a> </p>
+
+
+        <div class="flex-row">
+
+            <asl-google-signin-button type='standard' size='medium' text="signup_with">
+            </asl-google-signin-button>
+        </div>
+    </form>
+</div>

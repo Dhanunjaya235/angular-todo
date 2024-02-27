@@ -1,0 +1,287 @@
+$color_1: white;
+$color_2: #ffffff88;
+$background-color_1: #151515;
+$background-color_2: #00000055;
+$background-color_3: #00000099;
+$background-color_4: #ffbb66;
+$background-color_5: #ff8866;
+$background-color_6: #ff2233;
+$background-color_7: ghostwhite;
+$background-color_8: rgb(255, 69, 69);
+
+@keyframes rotation_481 {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	0% {
+		transform: rotateZ(360deg);
+	}
+}
+@keyframes floating {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+.card {
+	overflow: visible;
+	width: 190px;
+	height: 254px;
+	&:hover {
+		.content {
+			transform: rotateY(180deg);
+		}
+	}
+}
+.content {
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 300ms;
+	box-shadow: 0px 0px 10px 1px #000000ee;
+	border-radius: 5px;
+}
+.front {
+	background-color: $background-color_1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	border-radius: 5px;
+	overflow: hidden;
+	transform: rotateY(180deg);
+	color: $color_1;
+	.front-content {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+}
+.back {
+	background-color: $background-color_1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	border-radius: 5px;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	&::before {
+		position: absolute;
+		content: ' ';
+		display: block;
+		width: 160px;
+		height: 160%;
+		background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
+		animation: rotation_481 5000ms infinite linear;
+	}
+}
+.back-content {
+	position: absolute;
+	width: 99%;
+	height: 99%;
+	background-color: $background-color_1;
+	border-radius: 5px;
+	color: $color_1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+.front-content {
+	.badge {
+		background-color: $background-color_2;
+		padding: 2px 10px;
+		border-radius: 10px;
+		backdrop-filter: blur(2px);
+		width: fit-content;
+	}
+}
+.description {
+	box-shadow: 0px 0px 10px 5px #00000088;
+	width: 100%;
+	padding: 10px;
+	background-color: $background-color_3;
+	backdrop-filter: blur(5px);
+	border-radius: 5px;
+}
+.title {
+	font-size: 11px;
+	max-width: 100%;
+	display: flex;
+	justify-content: space-between;
+	p {
+		width: 50%;
+	}
+}
+.card-footer {
+	color: $color_2;
+	margin-top: 5px;
+	font-size: 8px;
+	display: flex;
+	flex-direction: column;
+}
+.circle {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	background-color: $background-color_4;
+	position: relative;
+	filter: blur(15px);
+	animation: floating 2600ms infinite linear;
+}
+#bottom {
+	background-color: $background-color_5;
+	left: 50px;
+	top: 0px;
+	width: 150px;
+	height: 150px;
+	animation-delay: -800ms;
+}
+#right {
+	background-color: $background-color_6;
+	left: 160px;
+	top: -80px;
+	width: 30px;
+	height: 30px;
+	animation-delay: -1800ms;
+}
+.delete-button {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: $background-color_7;
+	border: none;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+	cursor: pointer;
+	transition-duration: 0.3s;
+	overflow: hidden;
+	position: relative;
+	&:hover {
+		width: 90px;
+		border-radius: 50px;
+		transition-duration: 0.3s;
+		background-color: $background-color_8;
+		align-items: center;
+		.delete-svgIcon {
+			width: 20px;
+			transition-duration: 0.3s;
+			transform: translateY(60%);
+			-webkit-transform: rotate(360deg);
+			-moz-transform: rotate(360deg);
+			-o-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		&::before {
+			display: block;
+			padding-right: 10px;
+			font-size: 13px;
+			opacity: 1;
+			transform: translateY(0px);
+			transition-duration: 0.3s;
+		}
+	}
+	&::before {
+		display: none;
+		content: "Delete";
+		color: $color_1;
+		transition-duration: 0.3s;
+		font-size: 2px;
+	}
+}
+.edit-button {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: $background-color_7;
+	border: none;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+	cursor: pointer;
+	transition-duration: 0.3s;
+	overflow: hidden;
+	position: relative;
+	&:hover {
+		width: 90px;
+		border-radius: 50px;
+		transition-duration: 0.3s;
+		background-color: $background-color_8;
+		align-items: center;
+		.edit-svgIcon {
+			width: 20px;
+			transition-duration: 0.3s;
+			transform: translateY(60%);
+			-webkit-transform: rotate(360deg);
+			-moz-transform: rotate(360deg);
+			-o-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		&::before {
+			display: block;
+			padding-right: 10px;
+			font-size: 13px;
+			opacity: 1;
+			transform: translateY(0px);
+			transition-duration: 0.3s;
+		}
+	}
+	&::before {
+		display: none;
+		content: "Edit";
+		color: $color_1;
+		transition-duration: 0.3s;
+		font-size: 2px;
+	}
+}
+.delete-svgIcon {
+	width: 15px;
+	transition-duration: 0.3s;
+	path {
+		fill: black;
+	}
+}
+.edit-svgIcon {
+	width: 15px;
+	transition-duration: 0.3s;
+	path {
+		fill: black;
+	}
+}
+.actions {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
