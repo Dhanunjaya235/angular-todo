@@ -8,11 +8,15 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 export const routes: Routes = [
-    {path:'',redirectTo:'home',pathMatch:'full'},
-    {path:'login',component:LoginComponent},
-    {path:'home',component:HomeComponent},
-    {path:'register',component:RegisterComponent},
-    {path:'todolist',component:TodoListComponent,canActivate:[canActivateRouteGuard]},
-    {path:'todoform',component:TodoFormComponent,canActivate:[canActivateRouteGuard]},
-    {path:'contact',component:ContactUsComponent}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  {
+    path: 'todolist',
+    component: TodoListComponent,
+    canActivate: [canActivateRouteGuard],
+  },
+  { path: 'todoform', component: TodoFormComponent },
+  { path: 'contact', component: ContactUsComponent },
 ];

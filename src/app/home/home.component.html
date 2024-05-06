@@ -1,5 +1,9 @@
 <div class="quote-container">
-    @for (quote of quotes; track quote) {
+    <!-- @for (quote of quotes; track quote) {
     <todo-quote [quote]="quote"></todo-quote>
-    }
+    } -->
+
+    <voice-to-command></voice-to-command>
+
+    <button (click)="textToSpeech()">Text To Speech</button>
 </div>

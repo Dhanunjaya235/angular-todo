@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AxiosError, AxiosRequestConfig } from 'axios';
-import { AxiosConfig } from './axios-config';
+import { AxiosConfig } from '../axios-config';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
   ApiWrapper = AxiosConfig();
 
   handleErrors(error: AxiosError) {
@@ -17,7 +16,7 @@ export class ApiService {
       .then((response) => {
         return { data: [...response.data], status: response.status };
       })
-      .catch((error) => this.handleErrors(error))
+      .catch((error) => this.handleErrors(error));
   }
 
   async POST(endPoint: string, data: any, config?: AxiosRequestConfig) {
@@ -25,23 +24,26 @@ export class ApiService {
       .then((response) => {
         return { data: { ...response.data }, status: response.status };
       })
-      .catch((error) => this.handleErrors(error))
+      .catch((error) => this.handleErrors(error));
   }
 
   async DELETE(endPoint: string, config?: AxiosRequestConfig) {
     return await this.ApiWrapper.delete(endPoint, config)
       .then((response) => {
-        return { data: response.data, status: 200 }
-      }).catch((error) => {
-        this.handleErrors(error)
+        return { data: response.data, status: 200 };
       })
+      .catch((error) => {
+        this.handleErrors(error);
+      });
   }
 
   async PATCH(endPoint: string, data: any, config?: AxiosRequestConfig) {
-    return await this.ApiWrapper.patch(endPoint, data, config).then((response) => {
-      return { data: response.data, status: 200 }
-    }).catch((error) => {
-      this.handleErrors(error)
-    })
+    return await this.ApiWrapper.patch(endPoint, data, config)
+      .then((response) => {
+        return { data: response.data, status: 200 };
+      })
+      .catch((error) => {
+        this.handleErrors(error);
+      });
   }
 }

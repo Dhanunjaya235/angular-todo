@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoInterface } from '../models';
-import { UserService } from '../user.service';
-import { ApiService } from '../api.service';
+import { UserService } from '../services/user.service';
+import { ApiService } from '../services/api.service';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 @Component({
@@ -9,25 +9,25 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
   standalone: true,
   imports: [TodoItemComponent],
   templateUrl: './todo-list.component.html',
-  styleUrl: './todo-list.component.scss'
+  styleUrl: './todo-list.component.scss',
 })
 export class TodoListComponent implements OnInit {
-
   todoList: TodoInterface[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
 
   async fetchTodosOfUser() {
-    await this.apiService.GET(`todos/user`)
-    .then((response) => {
-      this.todoList=response.data;
-    }).catch((error) => {
-      this.todoList=[];
-    })
+    await this.apiService
+      .GET(`todos/user`)
+      .then((response) => {
+        this.todoList = response.data;
+      })
+      .catch((error) => {
+        this.todoList = [];
+      });
   }
 
   async ngOnInit() {
     await this.fetchTodosOfUser();
   }
-
 }
